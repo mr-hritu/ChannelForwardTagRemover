@@ -2,6 +2,9 @@ import os, asyncio
 from pyrogram import Client, filters
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 from pyrogram.errors import FloodWait
+from pyrogram import Client, filters
+from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup 
+from pyrogram.errors import UserBannedInChannel, UserNotParticipant
 
 bot = Client(
     "Remove FwdTag",
@@ -33,7 +36,7 @@ async def fore(c, m):
       except UserNotParticipant:
           button = [[InlineKeyboardButton('Updates Channel 🇮🇳', url='https://t.me/Private_Bots')]]
           markup = InlineKeyboardMarkup(button)
-          return await c.send_message(chat_id=m.chat.id, text="""Hai bro,\n\nYou must join my channel for using me.\n\nPress this button to join now 👇""", reply_markup=markup)
+          return await c.send_message(chat_id=m.chat.id, text="""Hai bro,\n\nYou must join my channel for using me.\n\nPress this button to join now 👇\n\n**When Joined Click On /start again**""", reply_markup=markup)
       m.continue_propagation()
 
 @bot.on_message(filters.command(["start"]))
